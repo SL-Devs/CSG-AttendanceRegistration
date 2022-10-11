@@ -142,7 +142,8 @@ const QRhome = () => {
       component="main"
       maxWidth="xs"
       sx={{
-        mt: "100px",
+        mt: "50px",
+        mb: "50px",
       }}
     >
       <CssBaseline />
