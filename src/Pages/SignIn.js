@@ -154,7 +154,7 @@ export default function SignIn() {
               width: "100%",
               textAlign: "center",
               padding: "5px",
-              backgroundColor: "green",
+              backgroundColor: "#0072bb",
             }}
           >
             Hey <span style={{ color: "yellow" }}>STI'ers </span>, Welcome 🙌.
