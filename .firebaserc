@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "csg-attendance"
+  },
+  "targets": {
+    "csg-attendance": {
+      "hosting": {
+        "registration": [
+          "csg-attendance-registration-sti-cdo"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
