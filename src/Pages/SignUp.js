@@ -160,7 +160,6 @@ export default function SignUp() {
     const imageFile = e.target.files[0];
     setId(small_id);
     const storageRef = sRef(storage, `Profile/${small_id}`);
-
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
     uploadTask.on(
@@ -179,7 +178,6 @@ export default function SignUp() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
           setImageAsset(downloadUrl);
           setImageLoading(false);
-          console.log(downloadUrl);
         });
       }
     );
