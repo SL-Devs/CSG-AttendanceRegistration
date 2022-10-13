@@ -155,10 +155,8 @@ export default function SignUp() {
     });
   };
 
-  console.log(imageId);
   const UploadImage = (e) => {
     const small_id = unique_id.slice(0, 8);
-
     const imageFile = e.target.files[0];
     setId(small_id);
     const storageRef = sRef(storage, `Profile/${small_id}`);
@@ -194,8 +192,6 @@ export default function SignUp() {
       setImageAsset(null);
     });
   };
-
-  console.log(imageId);
 
   return (
     <ThemeProvider theme={theme}>

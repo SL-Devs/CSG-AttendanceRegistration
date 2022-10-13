@@ -48,7 +48,6 @@ export default function ForgotPasswordModal() {
       setEmail("");
     } catch (e) {
       toast.error(e.message);
-      console.log(e.message);
     }
   };
   return (
