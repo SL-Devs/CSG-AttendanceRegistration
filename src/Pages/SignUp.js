@@ -269,8 +269,7 @@ export default function SignUp() {
                             color: "#0072bb",
                           }}
                         >
-                          {" "}
-                          {uploadingByte}%{" "}
+                          {`${uploadingByte}%`}
                         </Typography>
                       )}
                       <CircularProgress />

@@ -90,9 +90,7 @@ export default function SignIn() {
         toast.success("Login successful");
         setInputs(initialState);
         if (inputs.emailaddress === "csgdashboard@gmail.com") {
-          window.location.replace(
-            "https://csg-attendance.web.app/shs-timeIn/MorningIn.html?fbclid=IwAR17MKWljhEdZatqQl4ToBgglk19zPswNlmH-AObpebnEESyL6AzOm-UU7g"
-          );
+          window.location.replace("https://csg-attendance.web.app/");
         } else {
           Navigate(`qrhome/${user.user.uid}`);
         }
