@@ -97,6 +97,8 @@ export default function SignUp() {
   const [inputs, SetInputs] = useState(initialState);
   const [imageAsset, setImageAsset] = useState(null);
   const [loadingImage, setImageLoading] = useState(false);
+  const [uploadingByte, setUploadingByte] = useState(null);
+
   const togglePassword = () => {
     setTogglePassword(!togglepassword);
   };
@@ -170,6 +172,7 @@ export default function SignUp() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         const roundUp = Math.trunc(progressBar);
         setImageLoading(true);
+        setUploadingByte(roundUp);
       },
       (err) => {
         console.log(err);
@@ -256,7 +259,28 @@ export default function SignUp() {
               >
                 <>
                   {loadingImage ? (
-                    <CircularProgress />
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      {uploadingByte && (
+                        <Typography
+                          sx={{
+                            fontSize: "18px",
+                            fontWeight: "500",
+                            color: "#0072bb",
+                          }}
+                        >
+                          {" "}
+                          {uploadingByte}%{" "}
+                        </Typography>
+                      )}
+                      <CircularProgress />
+                    </Box>
                   ) : (
                     <>
                       {imageAsset ? (

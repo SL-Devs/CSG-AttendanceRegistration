@@ -71,7 +71,6 @@ function EditModal({ id }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setWindowLoad(true);
   };
 
   const handleSubmit = async (event) => {
@@ -93,6 +92,9 @@ function EditModal({ id }) {
         });
 
         toast.success("Successfully updated");
+        setTimeout(() => {
+          setWindowLoad(true);
+        }, 3000);
       } catch (e) {
         console.log(e.message);
       }
@@ -133,6 +135,7 @@ function EditModal({ id }) {
     });
     setCourseDropdownValue(dataEdit.course);
     setYearDropdownValue(dataEdit.yearlevel);
+
     handleOpen();
   };
 

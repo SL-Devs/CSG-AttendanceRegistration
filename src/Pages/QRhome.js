@@ -8,8 +8,7 @@ import Spinner from "../Utils/Spinner";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.config";
-import TouchAppIcon from "@mui/icons-material/TouchApp";
-import UploadIcon from "@mui/icons-material/Upload";
+
 import { storage } from "../firebase.config";
 import {
   CssBaseline,
@@ -21,7 +20,6 @@ import {
   Card,
   Avatar,
   CircularProgress,
-  Divider,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { toast } from "react-toastify";
@@ -51,8 +49,9 @@ const QRhome = () => {
 
   const [data, setData] = useState([]);
   const [imageAsset, setImageAsset] = useState(null);
-
   const [imageLoading, setImageLoading] = useState(false);
+  const [uploadingByte, setUploadingByte] = useState(null);
+
   const dbRef = ref(db);
 
   const getDataValue = () => {
@@ -119,7 +118,9 @@ const QRhome = () => {
         const progressBar =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         const roundUp = Math.trunc(progressBar);
+
         setImageLoading(true);
+        setUploadingByte(roundUp);
       },
       (err) => {
         console.log(err);
@@ -183,7 +184,28 @@ const QRhome = () => {
             >
               <>
                 {imageLoading ? (
-                  <CircularProgress />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    {uploadingByte && (
+                      <Typography
+                        sx={{
+                          fontSize: "18px",
+                          fontWeight: "500",
+                          color: "#0072bb",
+                        }}
+                      >
+                        {" "}
+                        {uploadingByte}%{" "}
+                      </Typography>
+                    )}
+                    <CircularProgress />
+                  </Box>
                 ) : (
                   <>
                     {data.urlLink && (
