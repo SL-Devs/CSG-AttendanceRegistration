@@ -102,7 +102,6 @@ const QRhome = () => {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-
     toast.success("QR Downloaded");
   };
   const UploadImage = (e) => {
@@ -278,33 +277,51 @@ const QRhome = () => {
             </Box>
           </CardContent>
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: " center",
-              alignItems: "center",
-              cursor: "pointer",
+          {data.firstname ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: " center",
+                alignItems: "center",
+                cursor: "pointer",
 
-              mb: "10px",
-            }}
-            onClick={downloadQR}
-          >
-            <QRCode
-              id="123456"
-              size={200}
-              bgColor="#0072bb"
-              fgColor="yellow"
-              value={data && QRvalue}
-            />
-          </Box>
-          <Typography
-            sx={{
-              textAlign: "center",
-              fontSize: "12px",
-            }}
-          >
-            Click to download
-          </Typography>
+                mb: "10px",
+              }}
+              onClick={downloadQR}
+            >
+              <QRCode
+                id="123456"
+                size={200}
+                bgColor="#0072bb"
+                fgColor="yellow"
+                value={data && QRvalue}
+              />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                mt: "20px",
+                mb: "20px",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          )}
+
+          {data.firstname && (
+            <Typography
+              sx={{
+                textAlign: "center",
+                fontSize: "12px",
+              }}
+            >
+              Click to download
+            </Typography>
+          )}
+
           <CardActions sx={{ justifyContent: "space-between" }}>
             <Button size="smale" onClick={handleLogout} sx={ButtonLogout}>
               Logout
