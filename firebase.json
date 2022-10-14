@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "registration",
-      "public": "public",
+      "public": "build",
       "rewrites": [
         {
           "source": "**",
